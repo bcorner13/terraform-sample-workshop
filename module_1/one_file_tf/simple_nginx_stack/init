@@ -1,0 +1,14 @@
+workspace="dev"
+
+terraform init -reconfigure\
+ --backend-config="region=us-east-1"\
+ --backend-config="profile=${workspace}"\
+ --backend-config="bucket=tf-remote-state-${workspace}"\
+ --backend-config="key=terraform/${workspace}/simple_nginx_stack/main.tf"\
+ --backend-config="dynamodb_table=tf-remote-state-lock-${workspace}"
+#    region         = "us-east-1"
+#    bucket         = "tf-remote-state-dev"
+#    dynamodb_table = "terraform_remote_state-lock-dev"
+#    profile        = "dev"
+#    key            = "terraform/one_file_tf/simple_nginx_stack/main.tf"
+#    encrypt        = true
